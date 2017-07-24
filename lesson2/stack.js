@@ -60,6 +60,16 @@ LinkedList.prototype.inserAtFirst = function (newElement) {
   this.head = newElement
 }
 
+LinkedList.prototype.deleteFirst = function () {
+  if (this.head) {
+    let deletedElement = this.head
+    let temp = deletedElement.next
+    this.head = temp
+    return deletedElement.value
+  }
+  return 'Stack is empty'
+}
+
 function Stack (top = null) {
   this._length = 0
   this.ll = new LinkedList(top)
@@ -77,6 +87,10 @@ Stack.prototype.push = function (newElement) {
   this.ll.inserAtFirst(newElement)
 }
 
+Stack.prototype.pop = function () {
+  console.log(this.ll.deleteFirst())
+}
+
 const e1 = new Element(1)
 const e2 = new Element(2)
 const e3 = new Element(3)
@@ -86,6 +100,7 @@ let stack = new Stack(e1)
 stack.push(e2)
 stack.push(e3)
 stack.push(e4)
+stack.pop()
 stack.traverse()
 stack.getLength()
 console.log(stack._length)

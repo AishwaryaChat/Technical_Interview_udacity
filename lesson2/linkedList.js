@@ -28,9 +28,28 @@ LinkedList.prototype.append = function (newElement) {
   }
 }
 
+LinkedList.prototype.getElementOnPosition = function (position) {
+  let counter = 1
+  let current = this.head
+  if (position < 1) {
+    return null
+  }
+  while (current && counter <= position) {
+    if (counter === position) {
+      return current.value
+    }
+    current = current.next
+    counter++
+  }
+}
+
 const e1 = new Element(1)
 const e2 = new Element(2)
+const e3 = new Element(3)
+const e4 = new Element(4)
 let myObj = new LinkedList(e1)
 myObj.append(e2)
-console.log('myObj', myObj)
-myObj.traverse()
+myObj.append(e3)
+myObj.append(e4)
+console.log(myObj.getElementOnPosition(4))
+// myObj.traverse()

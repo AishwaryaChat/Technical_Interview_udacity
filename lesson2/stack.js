@@ -17,6 +17,7 @@ LinkedList.prototype.getLength = function () {
     counter++
   }
   this._length = counter
+  return this._length
 }
 
 LinkedList.prototype.traverse = function () {
@@ -60,11 +61,16 @@ LinkedList.prototype.inserAtFirst = function (newElement) {
 }
 
 function Stack (top = null) {
+  this._length = 0
   this.ll = new LinkedList(top)
 }
 
 Stack.prototype.traverse = function () {
   this.ll.traverse()
+}
+
+Stack.prototype.getLength = function () {
+  this._length = this.ll.getLength()
 }
 
 Stack.prototype.push = function (newElement) {
@@ -81,3 +87,5 @@ stack.push(e2)
 stack.push(e3)
 stack.push(e4)
 stack.traverse()
+stack.getLength()
+console.log(stack._length)

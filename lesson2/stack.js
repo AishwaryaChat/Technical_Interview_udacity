@@ -54,14 +54,26 @@ LinkedList.prototype.getElementOnPosition = function (position) {
   }
 }
 
+LinkedList.prototype.inserAtFirst = function (newElement) {
+  newElement.next = this.head
+  this.head = newElement
+}
+
 function Stack (top = null) {
   this.ll = new LinkedList(top)
 }
 
+Stack.prototype.push = function (newElement) {
+  this.ll.inserAtFirst(newElement)
+}
+
 const e1 = new Element(1)
-// const e2 = new Element(2)
-// const e3 = new Element(3)
-// const e4 = new Element(4)
+const e2 = new Element(2)
+const e3 = new Element(3)
+const e4 = new Element(4)
 
 let stack = new Stack(e1)
+stack.push(e2)
+stack.push(e3)
+stack.push(e4)
 console.log(stack)

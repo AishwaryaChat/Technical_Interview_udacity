@@ -13,6 +13,10 @@ Queue.prototype.traverse = function () {
   }
 }
 
+Queue.prototype.getLength = function () {
+  this._length = this.storage.length
+}
+
 Queue.prototype.enqueue = function (value) {
   this.storage.push(value)
 }
@@ -21,3 +25,5 @@ const queue = new Queue(1)
 queue.enqueue(3)
 // console.log(queue)
 queue.traverse()
+queue.getLength()
+console.log(queue._length)

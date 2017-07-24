@@ -13,6 +13,11 @@ Queue.prototype.traverse = function () {
   }
 }
 
+Queue.prototype.enqueue = function (value) {
+  this.storage.push(value)
+}
+
 const queue = new Queue(1)
-console.log(queue)
+queue.enqueue(3)
+// console.log(queue)
 queue.traverse()

@@ -63,6 +63,10 @@ function Stack (top = null) {
   this.ll = new LinkedList(top)
 }
 
+Stack.prototype.traverse = function () {
+  this.ll.traverse()
+}
+
 Stack.prototype.push = function (newElement) {
   this.ll.inserAtFirst(newElement)
 }
@@ -76,4 +80,4 @@ let stack = new Stack(e1)
 stack.push(e2)
 stack.push(e3)
 stack.push(e4)
-console.log(stack)
+stack.traverse()

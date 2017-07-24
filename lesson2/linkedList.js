@@ -53,15 +53,37 @@ LinkedList.prototype.getElementOnPosition = function (position) {
   }
 }
 
+LinkedList.prototype.insertElementAtPosition = function (newElement, position) {
+  let counter = 1
+  let current = this.head
+  if (position < 1) {
+    return console.log('invalid position provided')
+  } else if (position > 1) {
+    while (current && counter < position) {
+      if (counter === position - 1) {
+        newElement.next = current.next
+        current.next = newElement
+      }
+      current = current.next
+      counter++
+    }
+  } else {
+    newElement.next = this.head
+    this.head = newElement
+  }
+}
+
 const e1 = new Element(1)
 const e2 = new Element(2)
 const e3 = new Element(3)
 const e4 = new Element(4)
+const e12 = new Element(12)
 let myObj = new LinkedList(e1)
 myObj.append(e2)
 myObj.append(e3)
 myObj.append(e4)
-// console.log(myObj.getElementOnPosition(4))
-myObj.getLength()
-console.log(myObj._length)
-// myObj.traverse()
+// myObj.getLength()
+// console.log(myObj._length)
+myObj.insertElementAtPosition(e12, 2)
+myObj.traverse()
+console.log(myObj.getElementOnPosition(5))

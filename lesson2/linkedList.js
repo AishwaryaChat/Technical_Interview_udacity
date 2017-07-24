@@ -8,6 +8,16 @@ function LinkedList (head = null) {
   this.head = head
 }
 
+LinkedList.prototype.getLength = function () {
+  let counter = 0
+  let current = this.head
+  while (current !== null) {
+    current = current.next
+    counter++
+  }
+  this._length = counter
+}
+
 LinkedList.prototype.traverse = function () {
   let current = this.head
   while (current !== null) {
@@ -51,5 +61,7 @@ let myObj = new LinkedList(e1)
 myObj.append(e2)
 myObj.append(e3)
 myObj.append(e4)
-console.log(myObj.getElementOnPosition(4))
+// console.log(myObj.getElementOnPosition(4))
+myObj.getLength()
+console.log(myObj._length)
 // myObj.traverse()

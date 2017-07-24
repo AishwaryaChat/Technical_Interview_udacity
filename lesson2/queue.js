@@ -25,6 +25,10 @@ Queue.prototype.dequeue = function () {
   this.storage.shift()
 }
 
+Queue.prototype.peek = function () {
+  return this.storage[0]
+}
+
 const queue = new Queue(1)
 queue.enqueue(3)
 queue.enqueue(10)
@@ -34,3 +38,4 @@ queue.dequeue()
 queue.traverse()
 queue.getLength()
 console.log(queue._length)
+console.log(queue.peek())

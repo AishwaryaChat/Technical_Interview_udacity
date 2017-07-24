@@ -73,6 +73,24 @@ LinkedList.prototype.insertElementAtPosition = function (newElement, position) {
   }
 }
 
+LinkedList.prototype.deleteElement = function (value) {
+  let current = this.head
+  let previous = null
+  while (current.value !== value && current.next) {
+    previous = current
+    current = current.next
+  }
+  if (current.value === value) {
+    if (previous) {
+      previous.next = current.next
+    } else {
+      this.head = current.next
+    }
+  } else {
+    return console.log('element to be deleted not found')
+  }
+}
+
 const e1 = new Element(1)
 const e2 = new Element(2)
 const e3 = new Element(3)
@@ -85,5 +103,7 @@ myObj.append(e4)
 // myObj.getLength()
 // console.log(myObj._length)
 myObj.insertElementAtPosition(e12, 2)
+// myObj.traverse()
+// console.log(myObj.getElementOnPosition(5))
+myObj.deleteElement(10)
 myObj.traverse()
-console.log(myObj.getElementOnPosition(5))

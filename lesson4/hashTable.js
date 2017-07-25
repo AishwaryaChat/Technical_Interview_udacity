@@ -18,10 +18,22 @@ HashTable.prototype.storeKey = function (key) {
   }
 }
 
+HashTable.prototype.lookup = function (key) {
+  let hashValue = this.calculateHashValue(key)
+  if (hashValue !== -1) {
+    if (this.table[hashValue] !== null) {
+      if (this.table[hashValue].indexOf(key) !== -1) return hashValue
+    }
+  }
+  return 'Not found'
+}
+
 let hashTable = new HashTable()
 
-// console.log(hashTable.calculateHashValue('UDACITY'))
+hashTable.storeKey('UDACITY')
 
-console.log(hashTable.storeKey('UDACITY'))
-console.log(hashTable.storeKey('UDACIOUS'))
-console.log(hashTable.table[8568])
+console.log(hashTable.lookup('UDACIOUS'))
+
+hashTable.storeKey('UDACIOUS')
+
+console.log(hashTable.lookup('UDACIOUS'))

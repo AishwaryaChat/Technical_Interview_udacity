@@ -27,11 +27,20 @@ BinarySearchTree.prototype.traverse = function (start, traversal) {
   return traversal
 }
 
+BinarySearchTree.prototype.search = function (start, value) {
+  if (start) {
+    if (start.value === value) return 'Found'
+    else if (value > start.value) return this.search(start.right, value)
+    else return this.search(start.left, value)
+  }
+  return 'Element not found in the tree'
+}
+
 const bst = new BinarySearchTree(4)
 bst.root.left = new Node(3)
 bst.root.left.left = new Node(2)
 bst.insert(bst.root, 5)
 bst.insert(bst.root, 6)
-bst.insert(bst.root, 2)
-console.log(bst)
+console.log(bst.search(bst.root, 5))
+// console.log(bst)
 console.log(bst.traverse(bst.root, ''))

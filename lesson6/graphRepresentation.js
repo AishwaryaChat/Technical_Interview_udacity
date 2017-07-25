@@ -43,9 +43,22 @@ Graph.prototype.insertEdge = function (newEdgeVal, nodeFromVal, nodeToVal) {
   toFound.edges.push(newEdge)
 }
 
+Graph.prototype.getEdgeList = function () {
+  let list = []
+  this.edges.map(edge => {
+    let ed = []
+    ed.push(edge.value)
+    ed.push(edge.nodeFrom.value)
+    ed.push(edge.nodeTo.value)
+    list.push(ed)
+  })
+  return list
+}
+
 const graph = new Graph()
 graph.insertEdge(100, 1, 2)
 graph.insertEdge(101, 1, 3)
 graph.insertEdge(102, 1, 4)
 graph.insertEdge(100, 1, 2)
-console.log(graph)
+// console.log(graph)
+console.log(graph.getEdgeList())

@@ -66,6 +66,21 @@ Graph.prototype.getAdjacencyList = function () {
   return adjacencyList
 }
 
+Graph.prototype.getAdjacencyMatrix = function () {
+  let maxIndex = findMaxIndex(this.nodes)
+  let adjacencyMatrix = []
+  for (var i = 0; i <= maxIndex; i++) {
+    adjacencyMatrix[i] = []
+  }
+  for (var k = 0; k <= maxIndex; k++) {
+    for (var j = 0; j <= maxIndex; j++) adjacencyMatrix[k].push(0)
+  }
+  this.edges.map(edge => {
+    adjacencyMatrix[edge.nodeFrom.value][edge.nodeTo.value] = edge.value
+  })
+  return adjacencyMatrix
+}
+
 const findMaxIndex = (nodes) => {
   let maxIndex = -1
   nodes.map(node => {
@@ -80,7 +95,8 @@ const graph = new Graph()
 graph.insertEdge(100, 1, 2)
 graph.insertEdge(101, 1, 3)
 graph.insertEdge(102, 1, 4)
-graph.insertEdge(100, 3, 2)
+graph.insertEdge(104, 3, 2)
 // console.log(graph)
 // console.log(graph.getEdgeList())
-console.log(graph.getAdjacencyList())
+// console.log(graph.getAdjacencyList())
+console.log(graph.getAdjacencyMatrix())
